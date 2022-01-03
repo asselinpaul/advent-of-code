@@ -3,8 +3,8 @@ import sequtils
 import parseutils
 
 let board_size = 5
-                          
-let contents = readFile("input.txt") 
+
+let contents = readFile("input.txt")
 let lines = contents.splitLines()
 
 let input_seq = lines[0].split(",")
@@ -36,7 +36,7 @@ proc check_win_condition(b: board.type): bool =
             return true
     for col_count in 0..<board_size:
         # column condition
-        var col: seq[string] = @[] 
+        var col: seq[string] = @[]
         for i in b.mapIt((it[col_count])):
             col.add(i)
         if col == complete_seq:
@@ -55,7 +55,8 @@ for i in input_seq:
     for b_idx in boards.low..boards.high:
         for r_idx in boards[b_idx].low..boards[b_idx].high:
             # mark the board
-            boards[b_idx][r_idx] = boards[b_idx][r_idx].mapIt((if it == i: "x" else: it))
+            boards[b_idx][r_idx] = boards[b_idx][r_idx].mapIt((if it ==
+                    i: "x" else: it))
         # check if board won
         if check_win_condition(boards[b_idx]):
             echo "board with marks: ", boards[b_idx]

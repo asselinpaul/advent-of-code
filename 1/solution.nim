@@ -1,7 +1,7 @@
 import strutils
 import sequtils
 
-let contents = readFile("input.txt") 
+let contents = readFile("input.txt")
 let str_numbers = contents.splitLines()
 let numbers = map(str_numbers, proc(x: string): int = parseInt(x))
 
